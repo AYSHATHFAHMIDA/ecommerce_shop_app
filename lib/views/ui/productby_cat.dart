@@ -7,14 +7,14 @@ import '../shared/appstyle.dart';
 import '../shared/category_btn.dart';
 import '../shared/latest_shoes.dart';
 
-class ProductNyCat extends StatefulWidget {
-  const ProductNyCat({Key? key}) : super(key: key);
-
+class ProductByCat extends StatefulWidget {
+  const ProductByCat({Key? key, required this.tabIndex}) : super(key: key);
+  final int tabIndex;
   @override
-  State<ProductNyCat> createState() => _ProductNyCatState();
+  State<ProductByCat> createState() => _ProductByCatState();
 }
 
-class _ProductNyCatState extends State<ProductNyCat>with TickerProviderStateMixin {
+class _ProductByCatState extends State<ProductByCat>with TickerProviderStateMixin {
   late final TabController _tabController=TabController(length: 3, vsync: this);
   late Future<List<Sneakers>> _male;
   late Future<List<Sneakers>> _female;
@@ -109,9 +109,12 @@ class _ProductNyCatState extends State<ProductNyCat>with TickerProviderStateMixi
                 child: TabBarView(
                     controller: _tabController,
                     children: [
-                      LatestShoes(male: _male),
-                      LatestShoes(male: _female),
-                      LatestShoes(male: _kids),
+                      // LatestShoes(male: _male),
+                      // LatestShoes(male: _female),
+                      // LatestShoes(male: _kids),
+                      if (widget.tabIndex == 0) LatestShoes(male: _male),
+                      if (widget.tabIndex == 1) LatestShoes(male: _female),
+                      if (widget.tabIndex == 2) LatestShoes(male: _kids),
                 ]),
               ),
             ),
