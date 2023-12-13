@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+
 class NewShoes extends StatelessWidget {
   const NewShoes({
     super.key, required this.imageUrl,

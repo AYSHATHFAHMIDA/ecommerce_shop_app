@@ -1,11 +1,12 @@
-import 'package:ecommerce_shop_app/views/shared/staggered_tile.dart';
+import 'package:ecommerce_shop_app/views/shared/custom_spacer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import '../../models/sneakers_model.dart';
 import '../../services/helper.dart';
 import '../shared/appstyle.dart';
+import '../shared/category_btn.dart';
 import '../shared/latest_shoes.dart';
+
 class ProductNyCat extends StatefulWidget {
   const ProductNyCat({Key? key}) : super(key: key);
 
@@ -18,8 +19,6 @@ class _ProductNyCatState extends State<ProductNyCat>with TickerProviderStateMixi
   late Future<List<Sneakers>> _male;
   late Future<List<Sneakers>> _female;
   late Future<List<Sneakers>> _kids;
-
-
 
   getMale(){
     _male=Helper().getMaleSneakers();
@@ -41,7 +40,12 @@ class _ProductNyCatState extends State<ProductNyCat>with TickerProviderStateMixi
     getFemale();
     getKids();
   }
-
+  List<String>brand=[
+    'assets/images/adidas.png',
+    'assets/images/gucci.png',
+    'assets/images/jordan.png',
+    'assets/images/nike.png',
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,7 +65,7 @@ class _ProductNyCatState extends State<ProductNyCat>with TickerProviderStateMixi
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                      padding: EdgeInsets.fromLTRB(6, 12, 16, 18),
+                      padding: const EdgeInsets.fromLTRB(6, 12, 16, 18),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -69,13 +73,13 @@ class _ProductNyCatState extends State<ProductNyCat>with TickerProviderStateMixi
                           onTap: (){
                             Navigator.pop(context);
                           },
-                          child: Icon(AntDesign.close,color: Colors.white,),
+                          child: const Icon(AntDesign.close,color: Colors.white,),
                         ),
                         GestureDetector(
                           onTap: (){
-
+                            filter();
                           },
-                          child: Icon(FontAwesome.sliders,color: Colors.white,),
+                          child: const Icon(FontAwesome.sliders,color: Colors.white,),
                         )
                       ],
                     ),
@@ -99,9 +103,9 @@ class _ProductNyCatState extends State<ProductNyCat>with TickerProviderStateMixi
               ),
             ),
             Padding(
-              padding:  EdgeInsets.only(top: MediaQuery.of(context).size.height*0.175,left: 16,right: 12),
+              padding:  EdgeInsets.only(top: MediaQuery.of(context).size.height*0.180,left: 16,right: 12),
               child: ClipRRect(
-                borderRadius: BorderRadius.all(Radius.circular(16)),
+                borderRadius: const BorderRadius.all(Radius.circular(16)),
                 child: TabBarView(
                     controller: _tabController,
                     children: [
@@ -116,6 +120,109 @@ class _ProductNyCatState extends State<ProductNyCat>with TickerProviderStateMixi
       ),
     );
   }
+  Future<dynamic>filter(){
+    double _value=100;
+    return showModalBottomSheet(
+        context: context,
+        isScrollControlled: true,
+        backgroundColor: Colors.transparent,
+        barrierColor: Colors.white54,
+        builder: (context)=>Container(
+          height: MediaQuery.of(context).size.height*0.82,
+          decoration: const BoxDecoration(
+            color:Colors.white,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(25),
+              topRight: Radius.circular(25)
+            ),
+          ),
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 10,
+              ),
+              Container(
+                height: 5,
+                width: 40,
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                  color: Colors.black,
+                ),
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height*0.8,
+                child: Column(
+                  children: [
+                   const CustomSpacer(),
+                    Text('Filter',style: appStyle(40, Colors.black, FontWeight.bold),),
+                    const CustomSpacer(),
+                    Text('Gender',style: appStyle(20, Colors.black, FontWeight.bold),),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    Row(
+                      children: const [
+                        CategoryBtn(buttonClr: Colors.black, label: 'Men'),
+                        CategoryBtn(buttonClr: Colors.grey, label: 'Women'),
+                        CategoryBtn(buttonClr: Colors.grey, label: 'Kids'),
+                        CustomSpacer(),
+                      ],
+                    ),
+                    const CustomSpacer(),
+                    Text('Category',style: appStyle(20, Colors.black,FontWeight.w600),),
+                    const SizedBox(height: 15,),
+                    Row(
+                      children: const [
+                        CategoryBtn(buttonClr: Colors.black, label: 'Shoes'),
+                        CategoryBtn(buttonClr: Colors.grey, label: 'Apparrels'),
+                        CategoryBtn(buttonClr: Colors.grey, label: 'Accessories'),
+                      ],
+                    ),
+                    const CustomSpacer(),
+                    Text('Price',style: appStyle(20, Colors.black, FontWeight.bold),),
+                    const CustomSpacer(),
+                    Slider(
+                        value: _value,
+                        activeColor: Colors.black,
+                        inactiveColor: Colors.grey,
+                        thumbColor: Colors.black,
+                        max: 500,
+                        divisions: 50,
+                        label: _value.toString(),
+                        secondaryTrackValue: 200,
+                        onChanged: (double value){
+                        }),
+                    const CustomSpacer(),
+                    Text('Brands',style: appStyle(20, Colors.black, FontWeight.bold),),
+                    const SizedBox(height: 15,),
+                    Container(
+                      padding: const EdgeInsets.all(8),
+                      height: 80,
+                      child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: brand.length,
+                          itemBuilder: (context,index){
+                            return Padding(
+                              padding: const EdgeInsets.all(8),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.grey.shade200,
+                                  borderRadius: const BorderRadius.all(Radius.circular(12)),
+                                ),
+                                child: Image.asset(brand[index],height: 60,width: 80,color: Colors.black,),
+                              ),
+                            );
+                      }),
+                    )
+                  ],
+                ),
+              )
+            ],
+          ),
+        ));
+  }
+
+
 }
 
 

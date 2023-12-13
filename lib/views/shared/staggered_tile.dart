@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerce_shop_app/views/shared/appstyle.dart';
 import 'package:flutter/material.dart';
+
 class StaggeredTiles extends StatefulWidget {
   const StaggeredTiles({Key? key, required this.imageUrl, required this.name, required this.price}) : super(key: key);
   final String imageUrl;

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class BottomNavWidget extends StatelessWidget {
-   BottomNavWidget({
+   const BottomNavWidget({
     super.key, this.onTap, this.icon,
   });
   final void Function()? onTap;

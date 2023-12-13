@@ -1,6 +1,7 @@
 import 'package:ecommerce_shop_app/views/shared/appstyle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
+
 class ProductCard extends StatefulWidget {
   const ProductCard({Key? key, required this.price, required this.category, required this.id, required this.name, required this.image}) : super(key: key);
   final String price;

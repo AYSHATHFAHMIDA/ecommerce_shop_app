@@ -1,13 +1,9 @@
-// import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerce_shop_app/services/helper.dart';
 import 'package:ecommerce_shop_app/views/shared/appstyle.dart';
 import 'package:flutter/material.dart';
-// import 'package:flutter_vector_icons/flutter_vector_icons.dart';
-
 import '../../models/sneakers_model.dart';
 import '../shared/home_widget.dart';
-// import '../shared/new_shoes.dart';
-// import '../shared/productcard.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -107,21 +103,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
       )
     );
   }
-
-  // Future<dynamic>filter(){
-  //   return showModalBottomSheet(
-  //       context: context,
-  //       isScrollControlled: true,
-  //       backgroundColor: Colors.transparent,
-  //       barrierColor: Colors.white,
-  //       builder: (context)=>Container(
-  //         height: MediaQuery.of(context).size.height*0.82,
-  //         decoration: BoxDecoration(
-  //           color:Colors.white,
-  //
-  //         ),
-  //       ));
-  // }
 }
 
 

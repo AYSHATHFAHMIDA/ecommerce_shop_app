@@ -4,6 +4,7 @@ import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import '../../models/sneakers_model.dart';
 import 'appstyle.dart';
 import 'new_shoes.dart';
+
 class HomeWidget extends StatelessWidget {
   const HomeWidget({
     super.key,
@@ -23,7 +24,7 @@ class HomeWidget extends StatelessWidget {
             future:_male,
             builder: ( context,snapshot) {
               if(snapshot.connectionState==ConnectionState.waiting){
-                return CircularProgressIndicator();
+                return const CircularProgressIndicator();
               }
               else if(snapshot.hasError){
                 return Text('Error ${snapshot.error}');
@@ -72,7 +73,7 @@ class HomeWidget extends StatelessWidget {
             future:_male,
             builder: ( context,snapshot) {
               if(snapshot.connectionState==ConnectionState.waiting){
-                return CircularProgressIndicator();
+                return const CircularProgressIndicator();
               }
               else if(snapshot.hasError){
                 return Text('Error ${snapshot.error}');
@@ -83,7 +84,7 @@ class HomeWidget extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context,index){
                     final shoe=snapshot.data![index];
-                    return Padding(padding: EdgeInsets.all(8.0),
+                    return Padding(padding: const EdgeInsets.all(8.0),
                         child:NewShoes(imageUrl: shoe.imageUrl[1]));
                   },
                 );
