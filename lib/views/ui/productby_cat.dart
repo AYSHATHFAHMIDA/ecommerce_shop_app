@@ -109,12 +109,10 @@ class _ProductByCatState extends State<ProductByCat>with TickerProviderStateMixi
                 child: TabBarView(
                     controller: _tabController,
                     children: [
-                      // LatestShoes(male: _male),
-                      // LatestShoes(male: _female),
-                      // LatestShoes(male: _kids),
-                      if (widget.tabIndex == 0) LatestShoes(male: _male),
-                      if (widget.tabIndex == 1) LatestShoes(male: _female),
-                      if (widget.tabIndex == 2) LatestShoes(male: _kids),
+                      LatestShoes(male: _male),
+                      LatestShoes(male: _female),
+                      LatestShoes(male: _kids),
+
                 ]),
               ),
             ),
