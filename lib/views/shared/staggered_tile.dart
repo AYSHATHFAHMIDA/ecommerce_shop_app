@@ -1,17 +1,17 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerce_shop_app/views/shared/appstyle.dart';
 import 'package:flutter/material.dart';
-class StaggeredTile extends StatefulWidget {
-  const StaggeredTile({Key? key, required this.imageUrl, required this.name, required this.price}) : super(key: key);
+class StaggeredTiles extends StatefulWidget {
+  const StaggeredTiles({Key? key, required this.imageUrl, required this.name, required this.price}) : super(key: key);
   final String imageUrl;
   final String name;
   final String price;
 
   @override
-  State<StaggeredTile> createState() => _StaggeredTileState();
+  State<StaggeredTiles> createState() => _StaggeredTileStates();
 }
 
-class _StaggeredTileState extends State<StaggeredTile> {
+class _StaggeredTileStates extends State<StaggeredTiles> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -28,7 +28,7 @@ class _StaggeredTileState extends State<StaggeredTile> {
             CachedNetworkImage(imageUrl: widget.imageUrl,fit: BoxFit.fill,),
             Container(
               padding: const EdgeInsets.only(top: 12),
-              height: 70,
+              height: 75,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,

@@ -107,6 +107,21 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
       )
     );
   }
+
+  // Future<dynamic>filter(){
+  //   return showModalBottomSheet(
+  //       context: context,
+  //       isScrollControlled: true,
+  //       backgroundColor: Colors.transparent,
+  //       barrierColor: Colors.white,
+  //       builder: (context)=>Container(
+  //         height: MediaQuery.of(context).size.height*0.82,
+  //         decoration: BoxDecoration(
+  //           color:Colors.white,
+  //
+  //         ),
+  //       ));
+  // }
 }
 
 
