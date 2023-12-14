@@ -39,6 +39,7 @@ class _ProductByCatState extends State<ProductByCat>with TickerProviderStateMixi
     getMale();
     getFemale();
     getKids();
+    _tabController.index=widget.tabIndex;
   }
   List<String>brand=[
     'assets/images/adidas.png',
@@ -112,7 +113,6 @@ class _ProductByCatState extends State<ProductByCat>with TickerProviderStateMixi
                       LatestShoes(male: _male),
                       LatestShoes(male: _female),
                       LatestShoes(male: _kids),
-
                 ]),
               ),
             ),

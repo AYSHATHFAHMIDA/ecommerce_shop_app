@@ -1,5 +1,6 @@
 import 'package:ecommerce_shop_app/views/shared/productcard.dart';
 import 'package:ecommerce_shop_app/views/ui/productby_cat.dart';
+import 'package:ecommerce_shop_app/views/ui/productpage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import '../../models/sneakers_model.dart';
@@ -14,6 +15,7 @@ class HomeWidget extends StatelessWidget {
 
   final Future<List<Sneakers>> _male;
   final int tabIndex;
+
 
   @override
   Widget build(BuildContext context) {
@@ -37,12 +39,18 @@ class HomeWidget extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context,index){
                     final shoe=snapshot.data![index];
-                    return  ProductCard(
-                      price: "\$${shoe.price}",
-                      category: shoe.category,
-                      id: shoe.id,
-                      name: shoe.name,
-                      image: shoe.imageUrl[0],
+                    return  GestureDetector(
+                      onTap: (){
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context)=>ProductPage(id: shoe.id, category: shoe.category)));
+                      },
+                      child: ProductCard(
+                        price: "\$${shoe.price}",
+                        category: shoe.category,
+                        id: shoe.id,
+                        name: shoe.name,
+                        image: shoe.imageUrl[0],
+                      ),
                     );
                   },
                 );

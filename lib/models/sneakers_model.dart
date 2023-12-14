@@ -1,7 +1,4 @@
-
-import 'package:meta/meta.dart';
 import 'dart:convert';
-
 List<Sneakers> sneakersFromJson(String str) => List<Sneakers>.from(json.decode(str).map((x) => Sneakers.fromJson(x)));
 
 // String sneakersToJson(List<Sneakers> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));

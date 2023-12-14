@@ -1,11 +1,13 @@
 import 'package:ecommerce_shop_app/controllers/mainscreen_provider.dart';
+import 'package:ecommerce_shop_app/controllers/product_provider.dart';
 import 'package:ecommerce_shop_app/views/ui/mainscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 void main() {
   runApp(MultiProvider(providers: [
-    ChangeNotifierProvider(create: (context)=>MainScreenNotifier())
+    ChangeNotifierProvider(create: (context)=>MainScreenNotifier()),
+    ChangeNotifierProvider(create: (context)=>ProductNotifier()),
   ],
   child: const MyApp()));
 }
@@ -28,28 +30,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-// class MyHomePage extends StatefulWidget {
-//   const MyHomePage({super.key, required this.title});
-//   final String title;
-//   @override
-//   State<MyHomePage> createState() => _MyHomePageState();
-// }
 
-// class _MyHomePageState extends State<MyHomePage> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text(widget.title),
-//       ),
-//       body: Center(
-//         child: TextButton(onPressed: () {
-//           Navigator.push(
-//             context,
-//             MaterialPageRoute(builder: (context) =>  MainScreen()),
-//           );
-//         }, child:Text('sample'),)
-//       ),
-//     );
-//   }
-// }
