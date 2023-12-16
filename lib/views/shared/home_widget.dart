@@ -1,8 +1,10 @@
+import 'package:ecommerce_shop_app/controllers/product_provider.dart';
 import 'package:ecommerce_shop_app/views/shared/productcard.dart';
 import 'package:ecommerce_shop_app/views/ui/productby_cat.dart';
 import 'package:ecommerce_shop_app/views/ui/productpage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
+import 'package:provider/provider.dart';
 import '../../models/sneakers_model.dart';
 import 'appstyle.dart';
 import 'new_shoes.dart';
@@ -19,6 +21,7 @@ class HomeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var productNotifier=Provider.of<ProductNotifier>(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -41,6 +44,8 @@ class HomeWidget extends StatelessWidget {
                     final shoe=snapshot.data![index];
                     return  GestureDetector(
                       onTap: (){
+                        productNotifier.shoeSizes=shoe.sizes;
+                        // print(productNotifier.shoeSizes);
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context)=>ProductPage(id: shoe.id, category: shoe.category)));
                       },
